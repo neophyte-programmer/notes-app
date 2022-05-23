@@ -62,4 +62,39 @@ body {
     margin-top: 2rem;
 }
 
+.note {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+.note__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.note__description {
+    display: block;
+    margin-top: 5px;
+    color: #575757;
+    font-size: 1rem;
+}
+
+.note__options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #0051ff58;
+    padding-top: 10px;
+}
+
+.note__date {
+    color: #6d6d6d;
+    font-size: .8rem;
+}
+
+.note__settings-icon {
+    color: #004FFF;
+    font-size: 1rem;
+    cursor: pointer;
+}
