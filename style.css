@@ -13,6 +13,10 @@ body {
     background: #004FFF;
 }
 
+li {
+    list-style: none;
+}
+
 /* General Styling */
 .container {
     margin: 50px;
