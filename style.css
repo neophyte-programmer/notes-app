@@ -25,10 +25,15 @@ li {
     gap: 1rem;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .box {
     background: #fff;
     height: 250px;
     border-radius: 5px;
+    cursor: pointer;
     padding: 15px 20px 20px;
 }
 
