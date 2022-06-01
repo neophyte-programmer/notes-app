@@ -1,12 +1,19 @@
-// Variable // Query Selectors
+// VARIABLES & QUERY SELECTORS
 const addBox = document.querySelector('.add__box');
 const popupBox = document.querySelector('.popup__box');
+const popupClose = document.querySelector('.popup__close');
 
-// Event Listeners
+// EVENT LISTENERS
 
 // Show Popup
 addBox.addEventListener('click', () => {
     popupBox.classList.toggle('show__popup');
 });
 
-// Functions
+// Close Popup
+popupClose.addEventListener('click', () => {
+    popupBox.classList.remove('show__popup');
+});
+
+// FUNCTIONS
+
