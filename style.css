@@ -181,6 +181,11 @@ li {
     pointer-events: none;
 }
 
+.popup__box.show__popup, .popup {
+    opacity: 1;
+    pointer-events: all;
+}
+
 .popup__content {
     border-radius: .5rem;
     background: #fff;
