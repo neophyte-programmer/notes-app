@@ -179,11 +179,12 @@ li {
 .popup__box, .popup {
     opacity: 0;
     pointer-events: none;
+    transition: all .3s ease;
 }
 
 .popup__box.show__popup, .popup {
     opacity: 1;
-    pointer-events: all;
+    pointer-events: auto;
 }
 
 .popup__content {
@@ -209,6 +210,19 @@ li {
     font-size: 1.5rem;
     color: #f00a21;
     cursor: pointer;
+    width: 2rem;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    /* background: blue; */
+    transition: all .4s;
+}
+
+.popup__close:hover {
+    color: #fff;
+    background: #f00a21;
 }
 
 .popup__form {
