@@ -19,6 +19,7 @@ addBox.addEventListener('click', () => {
 
 // Close Popup
 popupClose.addEventListener('click', () => {
+    isEdited = false
     inputTitle.value = ''
     inputDescription.value = ''
     addBtn.innerText = 'Add Note'
@@ -153,12 +154,12 @@ const showMenu = (element) => {
 
 // Delete note
 const deleteNote = (index) => {
-    // Remove note from array
-    notes.splice(index, 1)
-    // Update local storage
-    localStorage.setItem('notes', JSON.stringify(notes))
-    // Reload page
-    document.location.reload()
+    // Confirm delete
+    if (confirm('Are you sure you want to delete this note?')) {
+        notes.splice(index, 1)
+        storeNote()
+        document.location.reload()
+    }
 }
 
 // Edit note
