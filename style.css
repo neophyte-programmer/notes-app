@@ -43,6 +43,7 @@ li {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    width: 250px;
 }
 
 .add__icon-box {
@@ -75,6 +76,12 @@ li {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.note__details {
+    max-height: 165px;
+    overflow-y: auto;
+    transition: .4s ease;
 }
 
 .note__title {
