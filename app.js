@@ -2,14 +2,18 @@
 const addBox = document.querySelector('.add__box')
 const popupBox = document.querySelector('.popup__box')
 const popupClose = document.querySelector('.popup__close')
+const popupTitle = document.querySelector('.heading')
 const addBtn = document.querySelector('.popup__btn')
 const inputTitle = document.querySelector('.popup__title')
 const inputDescription = document.querySelector('.popup__description')
+
+let isEdited = false, updateIndex
 
 // EVENT LISTENERS
 
 // Show Popup
 addBox.addEventListener('click', () => {
+    inputTitle.focus() // Focus on title input
 	popupBox.classList.toggle('show__popup')
 })
 
@@ -17,6 +21,8 @@ addBox.addEventListener('click', () => {
 popupClose.addEventListener('click', () => {
     inputTitle.value = ''
     inputDescription.value = ''
+    addBtn.innerText = 'Add Note'
+    popupTitle.innerText = 'Add A New Note'
     document.location.reload()
 	popupBox.classList.remove('show__popup')
 })
@@ -33,15 +39,22 @@ addBtn.addEventListener('click', (e) => {
 	if (noteTitle === '' || noteDescription === '') {
 		// Error alert
 		alert('Please add a title and description')
-	} else {
-		// Object to store note details
-		const noteInfo = {
-			title: noteTitle,
-			description: noteDescription,
-			date: getCurrentDate(),
-		}
-		console.log(noteInfo)
-		storeNote(noteInfo)
+    } else {
+        // Object to store note details
+        const noteInfo = {
+            title: noteTitle,
+            description: noteDescription,
+            date: getCurrentDate(),
+        }
+        // Check if note is being edited
+        if (!isEdited) {
+            pushNote(noteInfo)
+        } else {
+            isEdited = false
+            notes[updateIndex] = noteInfo // update specified note
+        }
+
+        storeNote()
 		popupClose.click()
 	}
 })
@@ -81,10 +94,13 @@ const getCurrentDate = () => {
 // Get local storage notes if available or set to empty array
 const notes = JSON.parse(localStorage.getItem('notes')) || []
 
+// Push note info to notes array
+const pushNote = (note) => {
+    notes.push(note)
+}
+
 // Store note in local storage
-const storeNote = (input) => {
-	notes.push(input) // Push note info to notes array
-	console.log(notes)
+const storeNote = () => {
 	localStorage.setItem('notes', JSON.stringify(notes))
 }
 
@@ -106,7 +122,7 @@ const showNotes = () => {
             <div class="note__settings">
                 <i onclick="showMenu(this)" class="uil uil-ellipsis-h note__settings-icon"></i>
                 <ul class="note__settings-menu">
-                    <li onclick="editNote()" class="menu__item"><i class="uil uil-pen menu__icon icon__edit"></i>Edit</li>
+                    <li onclick="editNote(${index}, '${note.title}', '${note.description}')" class="menu__item"><i class="uil uil-pen menu__icon icon__edit"></i>Edit</li>
                     <li onclick="deleteNote(${index})" class="menu__item"><i class="uil uil-trash menu__icon icon__trash"></i>Delete</li>
                 </ul>
             </div>
@@ -137,10 +153,27 @@ const showMenu = (element) => {
 
 // Delete note
 const deleteNote = (index) => {
+    // Remove note from array
     notes.splice(index, 1)
+    // Update local storage
     localStorage.setItem('notes', JSON.stringify(notes))
+    // Reload page
     document.location.reload()
-    
+}
+
+// Edit note
+const editNote = (index, title, description) => {
+    isEdited = true
+    updateIndex = index
+    // Show popup
+    addBox.click()
+    // Change Title
+    addBtn.innerText = 'Edit '
+    popupTitle.innerText = 'Edit Note'
+    // Auto fill form
+    inputTitle.value = title
+    inputDescription.value = description
+
 }
 
 
