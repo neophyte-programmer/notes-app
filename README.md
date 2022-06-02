@@ -15,5 +15,8 @@ This is a notes app made with JS that stores the notes on the local storage.
 - [Check it out](https://nutifafas-notes-app.netlify.app/)
 
 ## How it looks like
-![](https://i.imgur.com/qQqQQ.png)
+![](index.png)
+![](add.png)
+![](delete.png)
+![](edit.png)
 
