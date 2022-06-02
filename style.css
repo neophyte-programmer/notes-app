@@ -124,7 +124,7 @@ li {
     transition: transform .4s ease;
 }
 
-.note__settings:hover .note__settings-menu {
+.note__settings.show__menu .note__settings-menu {
     transform: scale(1);
 }
 
