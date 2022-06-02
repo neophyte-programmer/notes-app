@@ -15,6 +15,9 @@ addBox.addEventListener('click', () => {
 
 // Close Popup
 popupClose.addEventListener('click', () => {
+    inputTitle.value = ''
+    inputDescription.value = ''
+    document.location.reload()
 	popupBox.classList.remove('show__popup')
 })
 
@@ -87,6 +90,9 @@ const storeNote = (input) => {
 
 // Show notes
 const showNotes = () => {
+    // Remove duplicate notes by removing previous notes before adding new ones
+    document.querySelectorAll(".note").forEach(note => note.remove());
+
 	notes.forEach((note) => {
 		let noteTemplate = `<div class="box note">
         <div class="note__details">
