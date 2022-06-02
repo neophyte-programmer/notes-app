@@ -93,7 +93,7 @@ const showNotes = () => {
     // Remove duplicate notes by removing previous notes before adding new ones
     document.querySelectorAll(".note").forEach(note => note.remove());
 
-	notes.forEach((note) => {
+	notes.forEach((note, index) => {
 		let noteTemplate = `<div class="box note">
         <div class="note__details">
             <p class="note__title"> ${note.title} </p>
@@ -106,8 +106,8 @@ const showNotes = () => {
             <div class="note__settings">
                 <i onclick="showMenu(this)" class="uil uil-ellipsis-h note__settings-icon"></i>
                 <ul class="note__settings-menu">
-                    <li class="menu__item"><i class="uil uil-pen menu__icon icon__edit"></i>Edit</li>
-                    <li class="menu__item"><i class="uil uil-trash menu__icon icon__trash"></i>Delete</li>
+                    <li onclick="editNote()" class="menu__item"><i class="uil uil-pen menu__icon icon__edit"></i>Edit</li>
+                    <li onclick="deleteNote(${index})" class="menu__item"><i class="uil uil-trash menu__icon icon__trash"></i>Delete</li>
                 </ul>
             </div>
         </div>
@@ -132,6 +132,14 @@ const showMenu = (element) => {
             element.parentElement.classList.remove('show__menu')
         }
     })
+    
+}
+
+// Delete note
+const deleteNote = (index) => {
+    notes.splice(index, 1)
+    localStorage.setItem('notes', JSON.stringify(notes))
+    document.location.reload()
     
 }
 
