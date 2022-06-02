@@ -85,13 +85,18 @@ li {
     font-weight: 500;
 }
 
+
 .note__description {
     display: block;
     margin-top: 5px;
     color: #575757;
     font-size: 1rem;
-    height: 70%;
+    /* height: 70%;  */
     overflow-y: auto;
+}
+
+.note__description {
+    max-height: 165px;
 }
 
 .note__options {
@@ -131,6 +136,25 @@ li {
 
 .note__settings.show__menu .note__settings-menu {
     transform: scale(1);
+}
+
+.note .note__description::-webkit-scrollbar,
+.popup textarea::-webkit-scrollbar{
+  width: 0;
+}
+.note .note__description:hover::-webkit-scrollbar,
+.popup textarea:hover::-webkit-scrollbar{
+  width: 5px;
+}
+.note .note__description:hover::-webkit-scrollbar-track,
+.popup textarea:hover::-webkit-scrollbar-track{
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+.note .note__description:hover::-webkit-scrollbar-thumb,
+.popup textarea:hover::-webkit-scrollbar-thumb{
+  background: #e6e6e6;
+  border-radius: 25px;
 }
 
 .menu__item {
