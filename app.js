@@ -37,9 +37,9 @@ addBtn.addEventListener('click', (e) => {
 			description: noteDescription,
 			date: getCurrentDate(),
 		}
-        console.log(noteInfo)
-        storeNote(noteInfo)
-        popupClose.click()
+		console.log(noteInfo)
+		storeNote(noteInfo)
+		popupClose.click()
 	}
 })
 
@@ -81,16 +81,14 @@ const notes = JSON.parse(localStorage.getItem('notes')) || []
 // Store note in local storage
 const storeNote = (input) => {
 	notes.push(input) // Push note info to notes array
-    console.log(notes)
+	console.log(notes)
 	localStorage.setItem('notes', JSON.stringify(notes))
 }
 
 // Show notes
 const showNotes = () => {
-    notes.forEach((note) => {
-        console.log(note)
-        console
-        let noteTemplate = `<div class="box note">
+	notes.forEach((note) => {
+		let noteTemplate = `<div class="box note">
         <div class="note__details">
             <p class="note__title"> ${note.title} </p>
             <span class="note__description">
@@ -108,8 +106,8 @@ const showNotes = () => {
             </div>
         </div>
     </div>`
-        addBox.insertAdjacentHTML('afterend', noteTemplate)
-    })
+		addBox.insertAdjacentHTML('afterend', noteTemplate)
+	})
 }
 
 showNotes()
