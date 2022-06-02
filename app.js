@@ -104,7 +104,7 @@ const showNotes = () => {
         <div class="note__options">
             <span class="note__date">${note.date}</span>
             <div class="note__settings">
-                <i class="uil uil-ellipsis-h note__settings-icon"></i>
+                <i onclick="showMenu(this)" class="uil uil-ellipsis-h note__settings-icon"></i>
                 <ul class="note__settings-menu">
                     <li class="menu__item"><i class="uil uil-pen menu__icon icon__edit"></i>Edit</li>
                     <li class="menu__item"><i class="uil uil-trash menu__icon icon__trash"></i>Delete</li>
@@ -116,4 +116,30 @@ const showNotes = () => {
 	})
 }
 
-showNotes()
+// Show Menu
+const showMenu = (element) => {
+    element.parentElement.classList.toggle('show__menu')
+    // Remove menu when menu item is clicked
+    document.querySelectorAll('.menu__item').forEach(item => {
+        item.addEventListener('click', () => {
+            element.parentElement.classList.remove('show__menu')
+        })
+    })
+
+    // Remove menu item when clicked outside menu
+    document.addEventListener('click', (e) => {
+        if (!element.parentElement.contains(e.target)) {
+            element.parentElement.classList.remove('show__menu')
+        }
+    })
+    
+}
+
+
+
+// Main function
+const main = () => {
+    showNotes()
+}
+
+main()
